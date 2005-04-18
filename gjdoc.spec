@@ -1,4 +1,5 @@
 Summary:	Documentation generation framework for Java source files
+Summary(pl):	Szkielet do generowania dokumentacji dla plików ¼ród³owych w Javie
 Name:		gjdoc
 Version:	0.7.3
 Release:	1
@@ -15,10 +16,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Gjdoc is a documentation framework for generating documentation in
-various formats from java source file. It is both a drop-in
+various formats from Java source files. It is both a drop-in
 replacement for the traditional command line tool `javadoc' and
 provides an interface for inspection of and generation of different
-output for java source packages, classes, methods and fields.
+output for Java source packages, classes, methods and fields.
 
 Gjdoc's current version implements all features of the traditional
 javadoc tool up to version 1.4. With the exception of two
@@ -30,6 +31,22 @@ However, in contrast to Javadoc, `gjdoc' does not perfom syntax
 checking on the supplied sources. If necessary, use a real compiler
 like `gcj -fsyntax-only` or `jikes +B' for checking the sources
 beforehand.
+
+%description -l pl
+gjdoc to szkielet s³u¿±cy do generowania dokumentacji w ró¿nych
+formatach z plików ¼ród³owych w Javie. Jest to zarówno zamiennik
+tradycyjnego polecenia javadoc, jak i interfejs do inspekcji i
+generowania ró¿nych formatów wyj¶ciowych dla pakietów ¼ród³owych,
+klas, metod i pól w Javie.
+
+Aktualna wersja gjdoc implementuje wszystkie mo¿liwo¶ci tradycyjnego
+narzêdzia javadoc do wersji 1.4. Z wyj±tkiem dwóch nieudokumentowanych
+opcji (-nocomment i -serialwarn) powinna byæ w pe³ni zgodna co do
+linii poleceñ i dostarcza kompatybilne Doclet API (com.sun.javadoc).
+
+Jednak, w porównaniu do Javadoc, gjdoc nie sprawdza sk³adni ¼róde³. W
+razie potrzeby ¼ród³a mo¿na sprawdziæ przedtem prawdziwym
+kompilatorem, np. "gcj -fsyntax-only" lub "jikes +B".
 
 %prep
 %setup -q
@@ -53,11 +70,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
-%ldconfig_post
+/sbin/ldconfig
 
 %postun
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
-%ldconfig_postun
+/sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
