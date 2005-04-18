@@ -7,7 +7,7 @@ Group:		Development/Languages/Java
 Source0:	ftp://ftp.gnu.org/gnu/classpath/%{name}-%{version}.tar.gz
 # Source0-md5:	639b8b82cc2a5f79415052daf9d367f3
 URL:		http://www.gnu.org/software/classpath/cp-tools/
-BuildRequires:	antlr >= 2.7.1-3
+BuildRequires:	antlr >= 2.7.5-3
 # Some versions of gcj are known to produce bad bytecode.
 # At least bug 19921 is known to affect gjdoc (in Feb 2005).
 BuildRequires:	gcc-java >= 5:4.0.0-0.20050416.1
