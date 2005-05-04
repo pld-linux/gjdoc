@@ -1,3 +1,7 @@
+#
+# TODO:
+#               - fix broken build with gcj on powerpc.
+#
 Summary:	Documentation generation framework for Java source files
 Summary(pl):	Szkielet do generowania dokumentacji dla plików ¼ród³owych w Javie
 Name:		gjdoc
