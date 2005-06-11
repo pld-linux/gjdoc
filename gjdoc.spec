@@ -5,12 +5,12 @@
 Summary:	Documentation generation framework for Java source files
 Summary(pl):	Szkielet do generowania dokumentacji dla plików ¼ród³owych w Javie
 Name:		gjdoc
-Version:	0.7.3
-Release:	1
+Version:	0.7.5
+Release:	0.1
 License:	GPL v2
 Group:		Development/Languages/Java
 Source0:	ftp://ftp.gnu.org/gnu/classpath/%{name}-%{version}.tar.gz
-# Source0-md5:	639b8b82cc2a5f79415052daf9d367f3
+# Source0-md5:	556d10c9c125ae2f4fc553e8ffff669d
 URL:		http://www.gnu.org/software/classpath/cp-tools/
 BuildRequires:	antlr >= 2.7.5-3
 # Some versions of gcj are known to produce bad bytecode.
