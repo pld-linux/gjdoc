@@ -7,11 +7,13 @@ License:	GPL v2
 Group:		Development/Languages/Java
 Source0:	ftp://ftp.gnu.org/gnu/classpath/%{name}-%{version}.tar.gz
 # Source0-md5:	f9755ee2601f7903360680694747a8c7
+Patch0:		%{name}-info.patch
 URL:		http://www.gnu.org/software/classpath/cp-tools/
 BuildRequires:	antlr >= 2.7.5-3
 # Some versions of gcj are known to produce bad bytecode.
 # At least bug 19921 is known to affect gjdoc (in Feb 2005).
 BuildRequires:	gcc-java >= 5:4.0.0-0.20050416.1
+BuildRequires:	texinfo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -50,13 +52,15 @@ kompilatorem, np. "gcj -fsyntax-only" lub "jikes +B".
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure \
+	GCJFLAGS="%{rpmcflags}" \
 	--with-antlr-jar=%{_javadir}/antlr.jar \
+	--enable-native \
 	--enable-shared \
-	--disable-static \
-	--enable-native
+	--disable-static
 
 %{__make}
 
@@ -82,6 +86,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/gjdoc
 %attr(755,root,root) %{_libdir}/lib*.so.*.*.*
-%{_infodir}/gjdoc.*
+%{_infodir}/gjdoc.info*
 %{_javadir}/*.jar
 %{_mandir}/man1/gjdoc.1*
