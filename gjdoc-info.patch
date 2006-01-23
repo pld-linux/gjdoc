@@ -1,0 +1,14 @@
+--- gjdoc-0.7.7/docs/gjdoc.texi.orig	2005-02-18 15:27:39.000000000 +0100
++++ gjdoc-0.7.7/docs/gjdoc.texi	2006-01-23 20:02:06.282312750 +0100
+@@ -86,9 +86,9 @@
+ @end table
+ @end copying
+ @ifnottex
+-@dircategory Programming
++@dircategory Programming tools:
+ @direntry
+-* gcc: (gcc).                  The GNU Compiler Collection.
++* gjdoc: (gjdoc).			Documentation Framework for Java
+ @end direntry
+ This file documents the use of the Gjdoc Java documentation framework.
+ @sp 1
