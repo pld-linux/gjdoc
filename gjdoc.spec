@@ -2,7 +2,7 @@ Summary:	Documentation generation framework for Java source files
 Summary(pl):	Szkielet do generowania dokumentacji dla plików ¼ród³owych w Javie
 Name:		gjdoc
 Version:	0.7.7
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Development/Languages/Java
 Source0:	ftp://ftp.gnu.org/gnu/classpath/%{name}-%{version}.tar.gz
