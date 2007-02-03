@@ -1,8 +1,9 @@
+%bcond_with	native
 Summary:	Documentation generation framework for Java source files
 Summary(pl):	Szkielet do generowania dokumentacji dla plików ¼ród³owych w Javie
 Name:		gjdoc
 Version:	0.7.7
-Release:	3
+Release:	4
 License:	GPL v2
 Group:		Development/Languages/Java
 Source0:	ftp://ftp.gnu.org/gnu/classpath/%{name}-%{version}.tar.gz
@@ -58,7 +59,7 @@ kompilatorem, np. "gcj -fsyntax-only" lub "jikes +B".
 %configure \
 	GCJFLAGS="%{rpmcflags}" \
 	--with-antlr-jar=%{_javadir}/antlr.jar \
-	--enable-native \
+	--%{?with_native:en}%{!?with_native:dis}able-native \
 	--enable-shared \
 	--disable-static
 
@@ -85,7 +86,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/gjdoc
+%if %{with native}
 %attr(755,root,root) %{_libdir}/lib*.so.*.*.*
+%endif
 %{_infodir}/gjdoc.info*
 %{_javadir}/*.jar
 %{_mandir}/man1/gjdoc.1*
