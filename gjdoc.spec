@@ -1,4 +1,7 @@
-%bcond_with	native
+#
+# Conditional build:
+%bcond_with	native	# build native library
+#
 Summary:	Documentation generation framework for Java source files
 Summary(pl):	Szkielet do generowania dokumentacji dla plików ¼ród³owych w Javie
 Name:		gjdoc
@@ -75,12 +78,12 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 
 %post
-[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 /sbin/ldconfig
+[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %postun
-[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 /sbin/ldconfig
+[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %files
 %defattr(644,root,root,755)
