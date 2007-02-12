@@ -3,7 +3,7 @@
 %bcond_with	native	# build native library
 #
 Summary:	Documentation generation framework for Java source files
-Summary(pl):	Szkielet do generowania dokumentacji dla plików ¼ród³owych w Javie
+Summary(pl.UTF-8):   Szkielet do generowania dokumentacji dla plikÃ³w ÅºrÃ³dÅ‚owych w Javie
 Name:		gjdoc
 Version:	0.7.7
 Release:	4
@@ -38,20 +38,20 @@ checking on the supplied sources. If necessary, use a real compiler
 like `gcj -fsyntax-only` or `jikes +B' for checking the sources
 beforehand.
 
-%description -l pl
-gjdoc to szkielet s³u¿±cy do generowania dokumentacji w ró¿nych
-formatach z plików ¼ród³owych w Javie. Jest to zarówno zamiennik
+%description -l pl.UTF-8
+gjdoc to szkielet sÅ‚uÅ¼Ä…cy do generowania dokumentacji w rÃ³Å¼nych
+formatach z plikÃ³w ÅºrÃ³dÅ‚owych w Javie. Jest to zarÃ³wno zamiennik
 tradycyjnego polecenia javadoc, jak i interfejs do inspekcji i
-generowania ró¿nych formatów wyj¶ciowych dla pakietów ¼ród³owych,
-klas, metod i pól w Javie.
+generowania rÃ³Å¼nych formatÃ³w wyjÅ›ciowych dla pakietÃ³w ÅºrÃ³dÅ‚owych,
+klas, metod i pÃ³l w Javie.
 
-Aktualna wersja gjdoc implementuje wszystkie mo¿liwo¶ci tradycyjnego
-narzêdzia javadoc do wersji 1.4. Z wyj±tkiem dwóch nieudokumentowanych
-opcji (-nocomment i -serialwarn) powinna byæ w pe³ni zgodna co do
-linii poleceñ i dostarcza kompatybilne Doclet API (com.sun.javadoc).
+Aktualna wersja gjdoc implementuje wszystkie moÅ¼liwoÅ›ci tradycyjnego
+narzÄ™dzia javadoc do wersji 1.4. Z wyjÄ…tkiem dwÃ³ch nieudokumentowanych
+opcji (-nocomment i -serialwarn) powinna byÄ‡ w peÅ‚ni zgodna co do
+linii poleceÅ„ i dostarcza kompatybilne Doclet API (com.sun.javadoc).
 
-Jednak, w porównaniu do Javadoc, gjdoc nie sprawdza sk³adni ¼róde³. W
-razie potrzeby ¼ród³a mo¿na sprawdziæ przedtem prawdziwym
+Jednak, w porÃ³wnaniu do Javadoc, gjdoc nie sprawdza skÅ‚adni ÅºrÃ³deÅ‚. W
+razie potrzeby ÅºrÃ³dÅ‚a moÅ¼na sprawdziÄ‡ przedtem prawdziwym
 kompilatorem, np. "gcj -fsyntax-only" lub "jikes +B".
 
 %prep
