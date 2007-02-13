@@ -3,7 +3,7 @@
 %bcond_with	native	# build native library
 #
 Summary:	Documentation generation framework for Java source files
-Summary(pl.UTF-8):   Szkielet do generowania dokumentacji dla plików źródłowych w Javie
+Summary(pl.UTF-8):	Szkielet do generowania dokumentacji dla plików źródłowych w Javie
 Name:		gjdoc
 Version:	0.7.7
 Release:	4
