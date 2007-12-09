@@ -18,6 +18,7 @@ BuildRequires:	antlr >= 2.7.5-3
 # At least bug 19921 is known to affect gjdoc (in Feb 2005).
 BuildRequires:	gcc-java >= 5:4.0.0-0.20050416.1
 BuildRequires:	texinfo
+Requires:	jpackage-utils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
