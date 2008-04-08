@@ -9,7 +9,7 @@ Version:	0.7.8
 Release:	1
 License:	GPL v2
 Group:		Development/Languages/Java
-Source0:	ftp://ftp.gnu.org/gnu/classpath/%{name}-%{version}.tar.gz
+Source0:	http://ftp.gnu.org/gnu/classpath/%{name}-%{version}.tar.gz
 # Source0-md5:	a60c6bb229025120412b8a9d69ef1800
 Patch0:		%{name}-info.patch
 URL:		http://www.gnu.org/software/classpath/cp-tools/
