@@ -1,16 +1,16 @@
 #
 # Conditional build:
-%bcond_with	native	# build native library
+%bcond_with	native	# build native library (needs as-needed fix)
 #
 Summary:	Documentation generation framework for Java source files
 Summary(pl.UTF-8):	Szkielet do generowania dokumentacji dla plików źródłowych w Javie
 Name:		gjdoc
-Version:	0.7.8
+Version:	0.7.9
 Release:	1
-License:	GPL v2
+License:	GPL v2+
 Group:		Development/Languages/Java
 Source0:	http://ftp.gnu.org/gnu/classpath/%{name}-%{version}.tar.gz
-# Source0-md5:	a60c6bb229025120412b8a9d69ef1800
+# Source0-md5:	24cade2efe22d5adefcbabb21f094803
 Patch0:		%{name}-info.patch
 URL:		http://www.gnu.org/software/classpath/cp-tools/
 BuildRequires:	antlr >= 2.7.5-3
@@ -79,20 +79,27 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/sbin/ldconfig
+%{?with_native:/sbin/ldconfig}
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %postun
-/sbin/ldconfig
+%{?with_native:/sbin/ldconfig}
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog NEWS README
+%doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/gjdoc
 %if %{with native}
-%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
+%attr(755,root,root) %{_libdir}/lib-com-sun-javadoc.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/lib-com-sun-javadoc.so.0
+%attr(755,root,root) %{_libdir}/lib-com-sun-tools-doclets-Taglet.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/lib-com-sun-tools-doclets-Taglet.so.0
+%attr(755,root,root) %{_libdir}/lib-gnu-classpath-tools-gjdoc.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/lib-gnu-classpath-tools-gjdoc.so.0
 %endif
 %{_infodir}/gjdoc.info*
-%{_javadir}/*.jar
+%{_javadir}/com-sun-javadoc-%{version}.jar
+%{_javadir}/com-sun-tools-doclets-Taglet-%{version}.jar
+%{_javadir}/gnu-classpath-tools-gjdoc-%{version}.jar
 %{_mandir}/man1/gjdoc.1*
