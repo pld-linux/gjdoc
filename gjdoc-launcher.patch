@@ -1,0 +1,13 @@
+--- gjdoc-0.7.9/gjdoc.sh.in~	2005-05-22 00:38:20.000000000 +0200
++++ gjdoc-0.7.9/gjdoc.sh.in	2009-02-25 11:51:01.000000000 +0100
+@@ -35,6 +35,10 @@
+   fi
+ fi
+ 
++if [ -z "${SHELL}" ]; then
++  export SHELL=/bin/sh
++fi
++
+ gjdocpath=${datadir}/java/com-sun-javadoc-${version}.jar:${datadir}/java/com-sun-tools-doclets-Taglet-${version}.jar:${datadir}/java/gnu-classpath-tools-gjdoc-${version}.jar:${ANTLR_JAR}:${CLASSPATH}
+ 
+ for i in ${1+"$@"}; do
