@@ -12,3 +12,26 @@
  @end direntry
  This file documents the use of the Gjdoc Java documentation framework.
  @sp 1
+--- gjdoc-0.7.9/docs/gjdoc.texi.orig	2015-01-04 10:37:22.000000000 +0000
++++ gjdoc-0.7.9/docs/gjdoc.texi	2015-01-04 10:38:47.986635571 +0000
+@@ -101,7 +101,7 @@
+ @titlepage
+ @center @titlefont{Using Gjdoc}
+ @sp 2
+-@center @subtitlefont{A Documentation Generation Framework for Java Source Files}
++@center A Documentation Generation Framework for Java Source Files
+ @sp 3
+ @center Last updated 17 Feb 2005
+ @sp 1
+--- gjdoc-0.7.9/docs/invoke.texi.orig	2005-05-23 21:54:09.000000000 +0000
++++ gjdoc-0.7.9/docs/invoke.texi	2015-01-04 10:56:00.426599151 +0000
+@@ -227,7 +227,8 @@
+ 
+ @item Virtual Machine Options
+ @xref{Virtual Machine Options,,Options Controlling Gjdoc Behavior}.
+-@gccoptlist{-classpath}  @gccoptlist{-bootclasspath}  @gccoptlist{-J}@var{vmopt}
++@c @gccoptlist{-classpath}  @gccoptlist{-bootclasspath}  @gccoptlist{-J}@var{vmopt}
++@gccoptlist{-classpath  -bootclasspath -J@var{vmopt}}
+ 
+ @end table
+ 
