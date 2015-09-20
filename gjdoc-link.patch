@@ -1,0 +1,50 @@
+--- gjdoc-0.7.9/Makefile.am.orig	2015-09-18 22:34:09.153733209 +0200
++++ gjdoc-0.7.9/Makefile.am	2015-09-18 22:34:12.750399726 +0200
+@@ -49,15 +49,14 @@
+ gjdoc_SOURCES = 
+ gjdoc_LINK = $(GCJLINK) $(gjdoc_LDFLAGS)
+ gjdoc_LDADD = -l-com-sun-javadoc -l-com-sun-tools-doclets-Taglet \
+-	-l-gnu-classpath-tools-gjdoc antlr.so \
++	-l-gnu-classpath-tools-gjdoc \
+ 	$(jni_linkflag)
+ 
+ gjdoc_LDFLAGS = --main=gnu.classpath.tools.gjdoc.Main \
+ 	-Dgnu.gcj.runtime.VMClassLoader.library_control=never
+ gjdoc_DEPENDENCIES = lib-com-sun-javadoc.la \
+ 	lib-com-sun-tools-doclets-Taglet.la \
+-	lib-gnu-classpath-tools-gjdoc.la \
+-	antlr.so
++	lib-gnu-classpath-tools-gjdoc.la
+ 
+ lib_com_sun_javadoc_la_SOURCES = \
+ 	src/com/sun/tools/javadoc/Main.java \
+@@ -259,7 +259,28 @@
+ 	$(lib_gnu_classpath_tools_gjdoc_la_XSLS) \
+ 	$(lib_gnu_classpath_tools_gjdoc_la_XHTML) \
+ 	$(lib_gnu_classpath_tools_gjdoc_la_TXTS) \
+-	version.lo
++	version.lo \
++	-L. -l:antlr.so \
++	lib-com-sun-javadoc.la \
++	lib-com-sun-tools-doclets-Taglet.la
++
++lib_gnu_classpath_tools_gjdoc_la_DEPENDENCIES = \
++	$(lib_gnu_classpath_tools_gjdoc_la_CSS) \
++	$(lib_gnu_classpath_tools_gjdoc_la_DTDS) \
++	$(lib_gnu_classpath_tools_gjdoc_la_ENTS) \
++	$(lib_gnu_classpath_tools_gjdoc_la_HTML) \
++	$(lib_gnu_classpath_tools_gjdoc_la_JS) \
++	$(lib_gnu_classpath_tools_gjdoc_la_PNG) \
++	$(lib_gnu_classpath_tools_gjdoc_la_MODS) \
++	$(lib_gnu_classpath_tools_gjdoc_la_PROPERTIES) \
++	$(lib_gnu_classpath_tools_gjdoc_la_RNGS) \
++	$(lib_gnu_classpath_tools_gjdoc_la_XSLS) \
++	$(lib_gnu_classpath_tools_gjdoc_la_XHTML) \
++	$(lib_gnu_classpath_tools_gjdoc_la_TXTS) \
++	version.lo \
++	antlr.so \
++	lib-com-sun-javadoc.la \
++	lib-com-sun-tools-doclets-Taglet.la
+ 
+ gnu_classpath_tools_gjdoc_jar_CSS = \
+ 	doctranslets/html/res/gjdochtml-clean.css \

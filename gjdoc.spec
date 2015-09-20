@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_with	native	# build native library (needs as-needed fix)
+%bcond_with	native	# build native library
 #
 Summary:	Documentation generation framework for Java source files
 Summary(pl.UTF-8):	Szkielet do generowania dokumentacji dla plików źródłowych w Javie
@@ -13,14 +13,24 @@ Source0:	http://ftp.gnu.org/gnu/classpath/%{name}-%{version}.tar.gz
 # Source0-md5:	24cade2efe22d5adefcbabb21f094803
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-launcher.patch
+Patch2:		%{name}-link.patch
 URL:		http://www.gnu.org/software/classpath/cp-tools/
 BuildRequires:	antlr >= 2.7.5-3
+BuildRequires:	autoconf >= 2.59
+BuildRequires:	automake
 # Some versions of gcj are known to produce bad bytecode.
 # At least bug 19921 is known to affect gjdoc (in Feb 2005).
 BuildRequires:	gcc-java >= 5:4.0.0-0.20050416.1
+BuildRequires:	libtool >= 2:1.5
 BuildRequires:	texinfo
 Requires:	jpackage-utils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+# circular dependency with lib-gnu-classpath-tools (void gnu::classpath::tools::gjdoc::Main::main(JArray<java::lang::String*>*))
+%define		skip_post_check_so	lib-com-sun-javadoc.so.*
+
+# some -W flags are not valid for Java, filter them out to avoid warnings (which break libtool configure)
+%define		gcjflags	%(echo %{rpmcflags} | sed -e 's/ -Wformat[^ ]*//g')
 
 %description
 Gjdoc is a documentation framework for generating documentation in
@@ -60,12 +70,17 @@ kompilatorem, np. "gcj -fsyntax-only" lub "jikes +B".
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
+%{__libtoolize}
+%{__aclocal} -I m4
+%{__autoconf}
+%{__automake}
 %configure \
-	GCJFLAGS="%{rpmcflags}" \
+	GCJFLAGS="%{gcjflags}" \
 	--with-antlr-jar=%{_javadir}/antlr.jar \
-	--%{?with_native:en}%{!?with_native:dis}able-native \
+	--enable-native%{!?with_native:=no} \
 	--enable-shared \
 	--disable-static
 
@@ -76,6 +91,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/{lib-com-sun-javadoc,lib-com-sun-tools-doclets-Taglet,lib-gnu-classpath-tools-gjdoc}.{la,so}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
